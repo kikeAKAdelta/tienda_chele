@@ -785,7 +785,7 @@ public final class frmHome extends javax.swing.JFrame {
 
         jLabel38.setFont(new java.awt.Font("Segoe UI Light", 0, 11)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel38.setText("García López, José Armando");
+        jLabel38.setText("López García, José Armando");
         pnlPortada.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 250, -1));
 
         jLabel39.setFont(new java.awt.Font("Segoe UI Light", 0, 11)); // NOI18N
