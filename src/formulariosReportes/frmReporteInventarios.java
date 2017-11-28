@@ -66,7 +66,6 @@ public class frmReporteInventarios extends javax.swing.JFrame {
     public frmReporteInventarios() throws ErrorTienda {
         initComponents();
         rbtnTodasS.setSelected(true);
-        CargarSucursales();
         obtenerUsuario();
                 lblCo1.setVisible(false);
         lblCo2.setVisible(false);
@@ -199,9 +198,7 @@ public class frmReporteInventarios extends javax.swing.JFrame {
         lblCambiarPwd = new javax.swing.JLabel();
         lblCerrarSesion = new javax.swing.JLabel();
         rbtnTodasS = new javax.swing.JRadioButton();
-        rbtnUnaS = new javax.swing.JRadioButton();
         btnGenerarReporte = new javax.swing.JButton();
-        cmbSucursalReporte = new javax.swing.JComboBox<>();
         lblReporteCompra = new javax.swing.JLabel();
         lblReporteVenta = new javax.swing.JLabel();
         lblReporteInventarios = new javax.swing.JLabel();
@@ -381,12 +378,6 @@ public class frmReporteInventarios extends javax.swing.JFrame {
         rbtnTodasS.setText("INVENTARIO TODAS LAS SUCURSALES");
         getContentPane().add(rbtnTodasS, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 320, -1, -1));
 
-        buttonGroup1.add(rbtnUnaS);
-        rbtnUnaS.setFont(new java.awt.Font("Segoe UI Light", 1, 12)); // NOI18N
-        rbtnUnaS.setForeground(new java.awt.Color(102, 0, 0));
-        rbtnUnaS.setText("UNA SUCURSAL EN ESPECIFICO");
-        getContentPane().add(rbtnUnaS, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 360, -1, -1));
-
         btnGenerarReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/botones/generar.png"))); // NOI18N
         btnGenerarReporte.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnGenerarReporte.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -403,9 +394,6 @@ public class frmReporteInventarios extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnGenerarReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 460, 110, 30));
-
-        cmbSucursalReporte.setFont(new java.awt.Font("Segoe UI Light", 1, 12)); // NOI18N
-        getContentPane().add(cmbSucursalReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 360, -1, -1));
 
         lblReporteCompra.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
         lblReporteCompra.setForeground(new java.awt.Color(153, 153, 153));
@@ -907,23 +895,23 @@ public class frmReporteInventarios extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-     public void CargarSucursales() throws ErrorTienda{
-        sucursales = ControladorSucursal.obtener();
-        miSucursal = new Object[sucursales.size()/4][4];
-        
-        int contador=0,fila=0;
-        Iterator<Sucursal> iterador= sucursales.iterator();
-        String temporal="";
-        while (iterador.hasNext()){
-            miSucursal[fila][0]=iterador.next();
-            miSucursal[fila][1]=iterador.next();
-            miSucursal[fila][2]=iterador.next();
-            miSucursal[fila][3]=iterador.next();
-            cmbSucursalReporte.addItem(""+miSucursal[fila][1]);
-            fila++;
-        }
-       
-    }
+//     public void CargarSucursales() throws ErrorTienda{
+//        sucursales = ControladorSucursal.obtener();
+//        miSucursal = new Object[sucursales.size()/4][4];
+//        
+//        int contador=0,fila=0;
+//        Iterator<Sucursal> iterador= sucursales.iterator();
+//        String temporal="";
+//        while (iterador.hasNext()){
+//            miSucursal[fila][0]=iterador.next();
+//            miSucursal[fila][1]=iterador.next();
+//            miSucursal[fila][2]=iterador.next();
+//            miSucursal[fila][3]=iterador.next();
+//            cmbSucursalReporte.addItem(""+miSucursal[fila][1]);
+//            fila++;
+//        }
+//       
+//    }
     
     
     
@@ -945,23 +933,23 @@ public class frmReporteInventarios extends javax.swing.JFrame {
             }
             
         }
-        else {
-            Conexion cn;
-            try {
-                cn = new Conexion();
-                Map parametrosucursal = new HashMap();
-                parametrosucursal.put("sucursales",cmbSucursalReporte.getSelectedItem() );
-                 JasperReport reporteinventario = JasperCompileManager.compileReport("reporteInventario.jrxml");
-                JasperPrint print = JasperFillManager.fillReport(reporteinventario, parametrosucursal, cn.conexion);
-                JasperViewer view = new JasperViewer (print,false);
-                view.setVisible(true);
-            } catch (ErrorTienda ex) {
-                Logger.getLogger(frmReporteInventarios.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (JRException ex) {
-                Logger.getLogger(frmReporteInventarios.class.getName()).log(Level.SEVERE, null, ex);
-            }
-           
-            }
+//        else {
+//            Conexion cn;
+//            try {
+//                cn = new Conexion();
+//                Map parametrosucursal = new HashMap();
+//                parametrosucursal.put("sucursales",cmbSucursalReporte.getSelectedItem() );
+//                 JasperReport reporteinventario = JasperCompileManager.compileReport("reporteInventario.jrxml");
+//                JasperPrint print = JasperFillManager.fillReport(reporteinventario, parametrosucursal, cn.conexion);
+//                JasperViewer view = new JasperViewer (print,false);
+//                view.setVisible(true);
+//            } catch (ErrorTienda ex) {
+//                Logger.getLogger(frmReporteInventarios.class.getName()).log(Level.SEVERE, null, ex);
+//            } catch (JRException ex) {
+//                Logger.getLogger(frmReporteInventarios.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//           
+//            }
        
         
         
@@ -1347,7 +1335,6 @@ public class frmReporteInventarios extends javax.swing.JFrame {
     private javax.swing.JButton btnTipoPrecio;
     private javax.swing.JButton btnVentas;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JComboBox<String> cmbSucursalReporte;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
@@ -1387,6 +1374,5 @@ public class frmReporteInventarios extends javax.swing.JFrame {
     private javax.swing.JPasswordField pwdNueva;
     private javax.swing.JPasswordField pwdNueva2;
     private javax.swing.JRadioButton rbtnTodasS;
-    private javax.swing.JRadioButton rbtnUnaS;
     // End of variables declaration//GEN-END:variables
 }
