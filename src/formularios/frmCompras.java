@@ -138,11 +138,9 @@ public class frmCompras extends javax.swing.JFrame {
         cmbProveedor = new javax.swing.JComboBox();
         jScrollPane6 = new javax.swing.JScrollPane();
         tblCompra = new javax.swing.JTable();
-        txtPercepcion = new javax.swing.JTextField();
         lblFecha = new javax.swing.JLabel();
         lblIdCompra = new javax.swing.JLabel();
         lblProveedor = new javax.swing.JLabel();
-        lblPercepcion = new javax.swing.JLabel();
         lblCodBarraProd = new javax.swing.JLabel();
         lblNomProd = new javax.swing.JLabel();
         txtNomProd = new javax.swing.JTextField();
@@ -184,7 +182,6 @@ public class frmCompras extends javax.swing.JFrame {
         lblComprar = new javax.swing.JLabel();
         lblDetallesCompras = new javax.swing.JLabel();
         jSeparator8 = new javax.swing.JSeparator();
-        lblNomProd2 = new javax.swing.JLabel();
         lblNomProd3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -195,7 +192,7 @@ public class frmCompras extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jpnPass.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), null));
+        jpnPass.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createBevelBorder(0), null));
         jpnPass.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
@@ -283,7 +280,7 @@ public class frmCompras extends javax.swing.JFrame {
 
         getContentPane().add(jpnPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, -195, 230, 190));
 
-        jpnUser.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), null));
+        jpnUser.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createBevelBorder(0), null));
         jpnUser.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 jpnUserMouseExited(evt);
@@ -418,16 +415,6 @@ public class frmCompras extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, 960, 200));
 
-        txtPercepcion.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        txtPercepcion.setForeground(new java.awt.Color(102, 0, 0));
-        txtPercepcion.setText("1");
-        txtPercepcion.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtPercepcionKeyTyped(evt);
-            }
-        });
-        getContentPane().add(txtPercepcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 580, 100, 40));
-
         lblFecha.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblFecha.setText("Fecha:");
         getContentPane().add(lblFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 190, 60, 30));
@@ -439,10 +426,6 @@ public class frmCompras extends javax.swing.JFrame {
         lblProveedor.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblProveedor.setText("Proveedor:");
         getContentPane().add(lblProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 190, 90, 30));
-
-        lblPercepcion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblPercepcion.setText("Percepción:");
-        getContentPane().add(lblPercepcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 580, 90, 40));
 
         lblCodBarraProd.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblCodBarraProd.setText("Cod Barra:");
@@ -862,11 +845,6 @@ public class frmCompras extends javax.swing.JFrame {
         jSeparator8.setForeground(new java.awt.Color(102, 0, 0));
         getContentPane().add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 117, 1020, 10));
 
-        lblNomProd2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblNomProd2.setForeground(new java.awt.Color(124, 20, 20));
-        lblNomProd2.setText("%");
-        getContentPane().add(lblNomProd2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 580, 30, 40));
-
         lblNomProd3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblNomProd3.setForeground(new java.awt.Color(124, 20, 20));
         lblNomProd3.setText("$");
@@ -1094,7 +1072,7 @@ public class frmCompras extends javax.swing.JFrame {
         
         if (TipoCompra==0) {
             txtIVA.setText(decimal.format(totalFinal*0.13));
-            percepcio = totalFinal*(Double.parseDouble(txtPercepcion.getText())/100);
+            percepcio = 0.0;
             txtTotal.setText(decimal.format(totalFinal+(totalFinal*0.13)+(percepcio)));
         }else{
             txtTotal.setText("$"+totalFinal);
@@ -1182,7 +1160,7 @@ public class frmCompras extends javax.swing.JFrame {
                 compra.setIdSucursal(ControladorSucursal.ObtenerIdSucursal(cmbSucursalCompra.getSelectedItem()));
                 compra.setFecha(dtcFecha.getDate());
                 if (Tipocompra==0) {
-                    compra.setPercepcion(Double.parseDouble(decimal.format(percepcio)));
+                    compra.setPercepcion(0.0);
                     compra.setIVA(Double.parseDouble(txtIVA.getText()));
                     compra.setTotal(Double.parseDouble(txtTotal.getText()));
                 }else{
@@ -1223,7 +1201,7 @@ public class frmCompras extends javax.swing.JFrame {
             tablaModel.setNumRows(0);
             txtTotal.setText("$");
             txtIVA.setText("");
-            txtPercepcion.setText("1");
+            
             cmbSucursalCompra.setEnabled(true);
             cmbSucursalCompra.setEnabled(true);
             cmbProveedor.setEnabled(true);
@@ -1329,10 +1307,9 @@ public class frmCompras extends javax.swing.JFrame {
             }
         }
         if (s == KeyEvent.VK_ENTER) {
-           if (txtCodBarraProd1.getText().equals("")||txtNomProd.getText().equals("")||txtCostoProd.getText().equals("")||txtCantidad.getText().equals("")||txtPercepcion.getText().equals("")) {
+           if (txtCodBarraProd1.getText().equals("")||txtNomProd.getText().equals("")||txtCostoProd.getText().equals("")||txtCantidad.getText().equals("")) {
                 mensajeNotificacion("Debe de rellenar todos los campos.", "Error");
-            }else if(Integer.parseInt(txtPercepcion.getText())<0||Integer.parseInt(txtPercepcion.getText())>100){
-                mensajeNotificacion("Percepcion entre 0 y 100", "Error");
+           
             }else{    if(Double.parseDouble(txtCostoProd.getText()) > 0){
                     if (exprod==false){
                         try {
@@ -1381,15 +1358,13 @@ public class frmCompras extends javax.swing.JFrame {
             lblIVA.setVisible(true);
             txtNumeroDoc.setVisible(true);
             txtIVA.setVisible(true);
-            lblPercepcion.setVisible(true);
-            txtPercepcion.setVisible(true);
+            
         }else{
             lblnumdoc.setVisible(false);
             txtNumeroDoc.setVisible(false);
             lblIVA.setVisible(false);
             txtIVA.setVisible(false);
-            lblPercepcion.setVisible(false);
-            txtPercepcion.setVisible(false);
+            
         }
     }//GEN-LAST:event_cmbTipoCompraItemStateChanged
 
@@ -1447,30 +1422,6 @@ public class frmCompras extends javax.swing.JFrame {
                 
         }
     }//GEN-LAST:event_txtCodBarraProd1KeyTyped
-
-    private void txtPercepcionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPercepcionKeyTyped
-        s = evt.getKeyChar();
-        int p = (int) evt.getKeyChar();
-
-        // double actualizarPrecio = ((((CantidadActual)*(PrecioActual))+((detalleCompra.get(i).getCantidad())*(detalleCompra.get(i).getCostoUnitario())))/((detalleCompra.get(i).getCantidad())+CantidadActual));
-        if (!Character.isDigit(s) && s != KeyEvent.VK_PERIOD) {
-            getToolkit().beep();
-            evt.consume();
-            txtTotal.setText(decimal.format(totalFinal+(totalFinal*0.13)+(percepcio)));
-        }else if (s == KeyEvent.VK_PERIOD) {
-            String cadena=txtPercepcion.getText();
-            int tamanio=cadena.length();
-            for (int i = 0; i <= tamanio; i++) {
-                if (cadena.contains(".")) {
-                    evt.setKeyChar((char) KeyEvent.VK_CLEAR);
-                    getToolkit().beep();
-                    evt.consume();
-                }
-            }
-        }
-        
-        
-    }//GEN-LAST:event_txtPercepcionKeyTyped
 
     private void lblUser1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUser1MouseClicked
         jpnWhite.setVisible(false);
@@ -1831,9 +1782,7 @@ public class frmCompras extends javax.swing.JFrame {
     private javax.swing.JLabel lblMenu;
     private javax.swing.JLabel lblNomProd;
     private javax.swing.JLabel lblNomProd1;
-    private javax.swing.JLabel lblNomProd2;
     private javax.swing.JLabel lblNomProd3;
-    private javax.swing.JLabel lblPercepcion;
     private javax.swing.JLabel lblProveedor;
     private javax.swing.JLabel lblRolUsuario;
     private javax.swing.JLabel lblTotal1;
@@ -1851,7 +1800,6 @@ public class frmCompras extends javax.swing.JFrame {
     private javax.swing.JTextField txtIdCompra;
     private javax.swing.JTextField txtNomProd;
     private javax.swing.JTextField txtNumeroDoc;
-    private javax.swing.JTextField txtPercepcion;
     private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }
