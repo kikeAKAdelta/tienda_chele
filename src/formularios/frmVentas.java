@@ -1079,6 +1079,13 @@ public class frmVentas extends javax.swing.JFrame {
             }
         });
         jScrollPane2.setViewportView(tblProductosVender);
+        if (tblProductosVender.getColumnModel().getColumnCount() > 0) {
+            tblProductosVender.getColumnModel().getColumn(0).setResizable(false);
+            tblProductosVender.getColumnModel().getColumn(1).setResizable(false);
+            tblProductosVender.getColumnModel().getColumn(1).setPreferredWidth(300);
+            tblProductosVender.getColumnModel().getColumn(3).setResizable(false);
+            tblProductosVender.getColumnModel().getColumn(4).setResizable(false);
+        }
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 390, 970, 190));
 
