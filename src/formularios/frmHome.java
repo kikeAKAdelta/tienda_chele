@@ -823,8 +823,6 @@ public final class frmHome extends javax.swing.JFrame {
         lbl6.setForeground(new java.awt.Color(102, 102, 102));
         lbl6.setText("nuevo sistema de Tienda.");
         jpnPrimero.add(lbl6, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 270, -1, 30));
-
-        lblMitad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/home/mitad6.jpg"))); // NOI18N
         jpnPrimero.add(lblMitad, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 515, 640));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/home/lanzador.png"))); // NOI18N
