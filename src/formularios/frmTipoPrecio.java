@@ -409,11 +409,11 @@ public class frmTipoPrecio extends javax.swing.JFrame {
 
             },
             new String [] {
-                "IdTipoPrecio", "Nombre", "Utilidad"
+                "IdTipoPrecio", "Nombre", "Utilidad %"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, true
+                false, true, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
