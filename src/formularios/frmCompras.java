@@ -164,8 +164,6 @@ public class frmCompras extends javax.swing.JFrame {
         jSeparator37 = new javax.swing.JSeparator();
         lblTotal1 = new javax.swing.JLabel();
         txtTotal = new javax.swing.JTextField();
-        lblIVA = new javax.swing.JLabel();
-        txtIVA = new javax.swing.JTextField();
         txtCodBarraProd1 = new javax.swing.JTextField();
         dtcFecha = new com.toedter.calendar.JDateChooser();
         lblNomProd1 = new javax.swing.JLabel();
@@ -204,7 +202,6 @@ public class frmCompras extends javax.swing.JFrame {
         lblComprar = new javax.swing.JLabel();
         lblDetallesCompras = new javax.swing.JLabel();
         jSeparator8 = new javax.swing.JSeparator();
-        lblNomProd3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -214,7 +211,7 @@ public class frmCompras extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jpnPass.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createBevelBorder(0), null));
+        jpnPass.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), null));
         jpnPass.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
@@ -302,7 +299,7 @@ public class frmCompras extends javax.swing.JFrame {
 
         getContentPane().add(jpnPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, -195, 230, 190));
 
-        jpnUser.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createBevelBorder(0), null));
+        jpnUser.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), null));
         jpnUser.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 jpnUserMouseExited(evt);
@@ -392,11 +389,11 @@ public class frmCompras extends javax.swing.JFrame {
         btnGuardarVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/botones/guardarprov.png"))); // NOI18N
         btnGuardarVenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnGuardarVenta.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnGuardarVentaMouseExited(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnGuardarVentaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnGuardarVentaMouseExited(evt);
             }
         });
         btnGuardarVenta.addActionListener(new java.awt.event.ActionListener() {
@@ -525,15 +522,6 @@ public class frmCompras extends javax.swing.JFrame {
         txtTotal.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         txtTotal.setForeground(new java.awt.Color(102, 0, 0));
         getContentPane().add(txtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 630, 100, 40));
-
-        lblIVA.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblIVA.setText("IVA:");
-        getContentPane().add(lblIVA, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 530, 50, 40));
-
-        txtIVA.setEditable(false);
-        txtIVA.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        txtIVA.setForeground(new java.awt.Color(102, 0, 0));
-        getContentPane().add(txtIVA, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 530, 100, 40));
 
         txtCodBarraProd1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -1035,11 +1023,6 @@ public class frmCompras extends javax.swing.JFrame {
         jSeparator8.setForeground(new java.awt.Color(102, 0, 0));
         getContentPane().add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 117, 1020, 10));
 
-        lblNomProd3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblNomProd3.setForeground(new java.awt.Color(124, 20, 20));
-        lblNomProd3.setText("$");
-        getContentPane().add(lblNomProd3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 530, 30, 40));
-
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -1261,9 +1244,9 @@ public class frmCompras extends javax.swing.JFrame {
         totalFinal=Double.parseDouble(decimal.format(total));
         
         if (TipoCompra==0) {
-            txtIVA.setText(decimal.format(totalFinal*0.13));
+            
             percepcio = 0.0;
-            txtTotal.setText(decimal.format(totalFinal+(totalFinal*0.13)+(percepcio)));
+            txtTotal.setText(decimal.format(totalFinal));
         }else{
             txtTotal.setText("$"+totalFinal);
         }
@@ -1351,7 +1334,7 @@ public class frmCompras extends javax.swing.JFrame {
                 compra.setFecha(dtcFecha.getDate());
                 if (Tipocompra==0) {
                     compra.setPercepcion(0.0);
-                    compra.setIVA(Double.parseDouble(txtIVA.getText()));
+                    compra.setIVA(0.0);
                     compra.setTotal(Double.parseDouble(txtTotal.getText()));
                 }else{
                     compra.setTotal(Double.parseDouble(decimal.format(Double.parseDouble(total))));
@@ -1390,7 +1373,7 @@ public class frmCompras extends javax.swing.JFrame {
             txtNumeroDoc.setText(String.valueOf(idCompra+1));
             tablaModel.setNumRows(0);
             txtTotal.setText("$");
-            txtIVA.setText("");
+            
             
             cmbSucursalCompra.setEnabled(true);
             cmbSucursalCompra.setEnabled(true);
@@ -1545,15 +1528,14 @@ public class frmCompras extends javax.swing.JFrame {
     private void cmbTipoCompraItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbTipoCompraItemStateChanged
         if(cmbTipoCompra.getSelectedIndex()==0){
             lblnumdoc.setVisible(true);
-            lblIVA.setVisible(true);
+            
             txtNumeroDoc.setVisible(true);
-            txtIVA.setVisible(true);
+            
             
         }else{
             lblnumdoc.setVisible(false);
             txtNumeroDoc.setVisible(false);
-            lblIVA.setVisible(false);
-            txtIVA.setVisible(false);
+            
             
         }
     }//GEN-LAST:event_cmbTipoCompraItemStateChanged
@@ -2030,13 +2012,11 @@ public class frmCompras extends javax.swing.JFrame {
     private javax.swing.JLabel lblCostoProd;
     private javax.swing.JLabel lblDetallesCompras;
     private javax.swing.JLabel lblFecha;
-    private javax.swing.JLabel lblIVA;
     private javax.swing.JLabel lblIdCompra;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblMenu;
     private javax.swing.JLabel lblNomProd;
     private javax.swing.JLabel lblNomProd1;
-    private javax.swing.JLabel lblNomProd3;
     private javax.swing.JLabel lblProveedor;
     private javax.swing.JLabel lblRolUsuario;
     private javax.swing.JLabel lblTotal1;
@@ -2050,7 +2030,6 @@ public class frmCompras extends javax.swing.JFrame {
     private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtCodBarraProd1;
     private javax.swing.JTextField txtCostoProd;
-    private javax.swing.JTextField txtIVA;
     private javax.swing.JTextField txtIdCompra;
     private javax.swing.JTextField txtNomProd;
     private javax.swing.JTextField txtNumeroDoc;
