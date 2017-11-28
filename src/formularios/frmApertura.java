@@ -38,6 +38,7 @@ public class frmApertura extends javax.swing.JFrame {
         initComponents();
         txtApertura.requestFocus();
         txtApertura.setText(""+Diseño.Apertura);
+        txtApertura.selectAll();
         
     }
 

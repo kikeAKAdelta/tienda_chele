@@ -1046,6 +1046,7 @@ public class frmCompras extends javax.swing.JFrame {
                 cmbTipoCompra.setSelectedIndex(2);
                 lblMenu.setVisible(false);
                 lblAgregarUsuario.setVisible(false);
+                                lblDetallesCompras.setVisible(false);
                 btnCompras.setVisible(true);
                 btnVentas.setVisible(true);
                 btnBitacoras.setVisible(false);
