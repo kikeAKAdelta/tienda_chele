@@ -187,8 +187,8 @@ public class frmComprasReportes extends javax.swing.JFrame {
         jpnWhite = new javax.swing.JPanel();
         lblUser1 = new javax.swing.JLabel();
         lblUser = new javax.swing.JLabel();
-        lblLogo = new javax.swing.JLabel();
         lblAgregarUsuario = new javax.swing.JLabel();
+        lblLogo = new javax.swing.JLabel();
         lblReporteInventarios = new javax.swing.JLabel();
         jSeparator9 = new javax.swing.JSeparator();
         lblReporteCompra = new javax.swing.JLabel();
@@ -426,13 +426,6 @@ public class frmComprasReportes extends javax.swing.JFrame {
         });
         jpnBarraSuperior.add(lblUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 0, 130, 50));
 
-        lblLogo.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        lblLogo.setForeground(new java.awt.Color(255, 255, 255));
-        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/home/lanzador.png"))); // NOI18N
-        lblLogo.setText("iShop 3.0");
-        lblLogo.setToolTipText("");
-        jpnBarraSuperior.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 150, 50));
-
         lblAgregarUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAgregarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/home/agus.png"))); // NOI18N
         lblAgregarUsuario.setToolTipText("Agregar Usuario");
@@ -443,6 +436,12 @@ public class frmComprasReportes extends javax.swing.JFrame {
             }
         });
         jpnBarraSuperior.add(lblAgregarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 0, 60, 50));
+
+        lblLogo.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        lblLogo.setForeground(new java.awt.Color(255, 255, 255));
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/home/lanzador.png"))); // NOI18N
+        lblLogo.setToolTipText("");
+        jpnBarraSuperior.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, -10, 100, 60));
 
         getContentPane().add(jpnBarraSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 55));
 

@@ -23,7 +23,7 @@ public class Conexion {
     public  Conexion() throws ErrorTienda{
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost/tienda", "root", "");  
+            conexion = DriverManager.getConnection("jdbc:mysql://localhost/tienda", "root", "12041377");  
             st = conexion.createStatement();
             
         } catch (Exception e) {
