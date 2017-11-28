@@ -69,6 +69,7 @@ public class frmCompras extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         LlenarCompras();
         TableModel();
+        cmbTipoCompra.setSelectedIndex(1);
         tHeadVentas = tblCompra.getTableHeader();
         Font fuente = new Font("Tahoma", Font.BOLD, 12);
         tHeadVentas.setBackground(jpnBarraSuperior.getBackground());
@@ -1197,11 +1198,9 @@ public class frmCompras extends javax.swing.JFrame {
             fila[1]=txtNomProd.getText();
             fila[2]=txtCantidad.getText();
             //System.out.println(decimalProductos.format(txtCostoProd.getText().toString()));
-            if (TipoCompra != 0) {
-                fila[3]=decimalProductos.format(Double.parseDouble(txtCostoProd.getText())+Double.parseDouble(txtCostoProd.getText())*0.13);
-            }else{
-                fila[3]=decimalProductos.format(Double.parseDouble(txtCostoProd.getText()));
-            }
+            
+            fila[3]=decimalProductos.format(Double.parseDouble(txtCostoProd.getText()));
+            
             fila[4]=String.valueOf(decimalProductos.format((Double.parseDouble(txtCantidad.getText()))*(Double.parseDouble(txtCostoProd.getText()))));
             tablaModel.addRow(fila);
             tblCompra.setModel(tablaModel);
