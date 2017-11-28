@@ -143,8 +143,8 @@ public final class frmHome extends javax.swing.JFrame {
         jpnWhite = new javax.swing.JPanel();
         lblUser1 = new javax.swing.JLabel();
         lblUser = new javax.swing.JLabel();
-        lblLogo = new javax.swing.JLabel();
         lblAgregarUsuario = new javax.swing.JLabel();
+        lblLogo = new javax.swing.JLabel();
         jpnBarraMenu = new javax.swing.JPanel();
         lblMenu = new javax.swing.JLabel();
         jpnSubMenu = new javax.swing.JPanel();
@@ -193,17 +193,13 @@ public final class frmHome extends javax.swing.JFrame {
         jLabel32 = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
-        lbl4 = new javax.swing.JLabel();
         lbl7 = new javax.swing.JLabel();
-        lbl5 = new javax.swing.JLabel();
-        lbl6 = new javax.swing.JLabel();
-        lblMitad = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        lbl3 = new javax.swing.JLabel();
         jpnUser = new javax.swing.JPanel();
         lblRolUsuario = new javax.swing.JLabel();
         lblCambiarPwd = new javax.swing.JLabel();
         lblCerrarSesion = new javax.swing.JLabel();
+        lblMitad = new javax.swing.JLabel();
+        lbl3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home");
@@ -264,13 +260,6 @@ public final class frmHome extends javax.swing.JFrame {
         });
         jpnBarraSuperior.add(lblUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 0, 130, 50));
 
-        lblLogo.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        lblLogo.setForeground(new java.awt.Color(255, 255, 255));
-        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/home/lanzador.png"))); // NOI18N
-        lblLogo.setText("iShop 3.0");
-        lblLogo.setToolTipText("");
-        jpnBarraSuperior.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 150, 50));
-
         lblAgregarUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAgregarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/home/agus.png"))); // NOI18N
         lblAgregarUsuario.setToolTipText("Agregar Usuario");
@@ -281,6 +270,12 @@ public final class frmHome extends javax.swing.JFrame {
             }
         });
         jpnBarraSuperior.add(lblAgregarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 0, 60, 50));
+
+        lblLogo.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        lblLogo.setForeground(new java.awt.Color(255, 255, 255));
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/home/lanzador.png"))); // NOI18N
+        lblLogo.setToolTipText("");
+        jpnBarraSuperior.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, -10, 100, 60));
 
         getContentPane().add(jpnBarraSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 55));
 
@@ -667,7 +662,7 @@ public final class frmHome extends javax.swing.JFrame {
         jpnPrincipal.setBackground(new java.awt.Color(255, 255, 255));
         jpnPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jpnPrimero.setBackground(new java.awt.Color(0, 0, 0));
+        jpnPrimero.setBackground(new java.awt.Color(255, 255, 255));
         jpnPrimero.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jpnPass.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -793,16 +788,10 @@ public final class frmHome extends javax.swing.JFrame {
         jLabel39.setText("García Rodríguez, Oscar Arnoldo");
         pnlPortada.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 250, -1));
 
-        jpnPrimero.add(pnlPortada, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 420, 350, 160));
-
-        lbl4.setFont(new java.awt.Font("Segoe UI Light", 1, 16)); // NOI18N
-        lbl4.setForeground(new java.awt.Color(255, 255, 255));
-        lbl4.setText("iShop");
-        jpnPrimero.add(lbl4, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 220, 50, -1));
+        jpnPrimero.add(pnlPortada, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 480, 350, 160));
 
         lbl7.setBackground(new java.awt.Color(153, 153, 153));
-        lbl7.setFont(new java.awt.Font("Segoe UI Light", 0, 11)); // NOI18N
-        lbl7.setForeground(new java.awt.Color(102, 102, 102));
+        lbl7.setFont(new java.awt.Font("Segoe UI Light", 1, 11)); // NOI18N
         lbl7.setText("Versión 3.0");
         lbl7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -812,22 +801,7 @@ public final class frmHome extends javax.swing.JFrame {
                 lbl7MouseExited(evt);
             }
         });
-        jpnPrimero.add(lbl7, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 590, 70, -1));
-
-        lbl5.setFont(new java.awt.Font("Segoe UI Light", 1, 12)); // NOI18N
-        lbl5.setForeground(new java.awt.Color(102, 102, 102));
-        lbl5.setText("Te damos la bienvenida a tu");
-        jpnPrimero.add(lbl5, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 260, -1, -1));
-
-        lbl6.setFont(new java.awt.Font("Segoe UI Light", 1, 12)); // NOI18N
-        lbl6.setForeground(new java.awt.Color(102, 102, 102));
-        lbl6.setText("nuevo sistema de Tienda.");
-        jpnPrimero.add(lbl6, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 270, -1, 30));
-        jpnPrimero.add(lblMitad, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 515, 640));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/home/lanzador.png"))); // NOI18N
-        jpnPrimero.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 170, -1, -1));
-        jpnPrimero.add(lbl3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, -1, -1));
+        jpnPrimero.add(lbl7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 600, 70, -1));
 
         jpnUser.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
@@ -840,7 +814,7 @@ public final class frmHome extends javax.swing.JFrame {
         lblRolUsuario.setForeground(new java.awt.Color(102, 0, 0));
         lblRolUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblRolUsuario.setText("Nombres + Apellidos");
-        jpnUser.add(lblRolUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 5, 230, 30));
+        jpnUser.add(lblRolUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 230, 30));
 
         lblCambiarPwd.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
         lblCambiarPwd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/login/pin.png"))); // NOI18N
@@ -867,7 +841,13 @@ public final class frmHome extends javax.swing.JFrame {
 
         jpnPrimero.add(jpnUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 230, 110));
 
-        jpnPrincipal.add(jpnPrimero, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 1070, 650));
+        lblMitad.setBackground(new java.awt.Color(255, 255, 255));
+        lblMitad.setForeground(new java.awt.Color(255, 255, 255));
+        lblMitad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/logo1_1.png"))); // NOI18N
+        jpnPrimero.add(lblMitad, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 960, 640));
+        jpnPrimero.add(lbl3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, -1, -1));
+
+        jpnPrincipal.add(jpnPrimero, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 1010, 650));
 
         getContentPane().add(jpnPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 1030, 650));
 
@@ -1241,7 +1221,6 @@ public final class frmHome extends javax.swing.JFrame {
     private javax.swing.JButton btnVentas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
@@ -1261,9 +1240,6 @@ public final class frmHome extends javax.swing.JFrame {
     private javax.swing.JPanel jpnUser;
     private javax.swing.JPanel jpnWhite;
     private javax.swing.JLabel lbl3;
-    private javax.swing.JLabel lbl4;
-    private javax.swing.JLabel lbl5;
-    private javax.swing.JLabel lbl6;
     private javax.swing.JLabel lbl7;
     private javax.swing.JLabel lbl8;
     private javax.swing.JLabel lblAgregarUsuario;
