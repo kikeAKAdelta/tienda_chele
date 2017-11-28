@@ -43,7 +43,7 @@ public class frmVentasDetalle extends javax.swing.JFrame {
 
     boolean estadoMenu;
     public int seleccion;
-    public int id;
+    public int id,contadorFecha=0;
     String rol, password;
     DefaultTableModel modeloDetalle,modelo;
     double subTotales;
@@ -811,6 +811,11 @@ public class frmVentasDetalle extends javax.swing.JFrame {
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, -1, 30));
 
         jdcFecha.setDateFormatString("yyyy-dd-MM");
+        jdcFecha.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jdcFechaPropertyChange(evt);
+            }
+        });
         getContentPane().add(jdcFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 200, 30));
 
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/botones/buscar.png"))); // NOI18N
@@ -819,7 +824,7 @@ public class frmVentasDetalle extends javax.swing.JFrame {
                 btnBuscarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 180, 110, 30));
+        getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 180, 110, 30));
 
         btnDetalle1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/botones/detalles2.png"))); // NOI18N
         btnDetalle1.addActionListener(new java.awt.event.ActionListener() {
@@ -1334,7 +1339,7 @@ public class frmVentasDetalle extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Mostrar por:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 190, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 200, -1, -1));
 
         cmbBuscarPor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         cmbBuscarPor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dia", "Mes", "Año" }));
@@ -1348,7 +1353,7 @@ public class frmVentasDetalle extends javax.swing.JFrame {
                 cmbBuscarPorActionPerformed(evt);
             }
         });
-        getContentPane().add(cmbBuscarPor, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 180, 110, 30));
+        getContentPane().add(cmbBuscarPor, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 190, 110, 30));
 
         pack();
         setLocationRelativeTo(null);
@@ -1357,7 +1362,7 @@ public class frmVentasDetalle extends javax.swing.JFrame {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         
         
-        
+        cmbBuscarPor.setSelectedIndex(0);
         modelo.setRowCount(0);
         String fecha=sd.format(jdcFecha.getDate());
         
@@ -1889,6 +1894,13 @@ public class frmVentasDetalle extends javax.swing.JFrame {
         bi.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnBitacorasActionPerformed
+
+    private void jdcFechaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jdcFechaPropertyChange
+        contadorFecha++;
+        if(contadorFecha>1){
+            cmbBuscarPor.setSelectedIndex(0);
+        }
+    }//GEN-LAST:event_jdcFechaPropertyChange
 
     /**
      * @param args the command line arguments

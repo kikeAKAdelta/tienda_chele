@@ -1603,9 +1603,22 @@ public class frmVentasBorrador extends javax.swing.JFrame {
             }
             else if(rol.equals("V")){
                 lblRolUsuario.setText("VENDEDOR");
-                jpnSubMenu.setVisible(false);
+                //jpnSubMenu.setVisible(false);
                 lblDetallesVentas.setVisible(false);
                 lblMenu.setVisible(false);
+                lblAgregarUsuario.setVisible(false);
+                btnCompras.setVisible(true);
+                btnVentas.setVisible(true);
+                btnBitacoras.setVisible(false);
+                btnDetalleCompras.setVisible(false);
+                btnDetalleVentas.setVisible(false);
+                btnHome.setVisible(false);
+                btnParametro.setVisible(false);
+                btnProductos.setVisible(false);
+                btnProveedores.setVisible(false);
+                btnReportes.setVisible(false);
+                btnTipoPrecio.setVisible(false);
+                btnSucursales.setVisible(false);
             }
             else if(rol.equals("C")){
                 lblRolUsuario.setText("COMPRADOR");

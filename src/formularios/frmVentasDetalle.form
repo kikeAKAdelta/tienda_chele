@@ -993,6 +993,9 @@
       <Properties>
         <Property name="dateFormatString" type="java.lang.String" value="yyyy-dd-MM"/>
       </Properties>
+      <Events>
+        <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="jdcFechaPropertyChange"/>
+      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="300" y="180" width="200" height="30"/>
@@ -1010,7 +1013,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="770" y="180" width="110" height="30"/>
+          <AbsoluteConstraints x="510" y="180" width="110" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -1900,7 +1903,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="520" y="190" width="-1" height="-1"/>
+          <AbsoluteConstraints x="950" y="200" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -1926,7 +1929,7 @@
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="610" y="180" width="110" height="30"/>
+          <AbsoluteConstraints x="1040" y="190" width="110" height="30"/>
         </Constraint>
       </Constraints>
     </Component>

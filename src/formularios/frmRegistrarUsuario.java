@@ -224,7 +224,7 @@ public class frmRegistrarUsuario extends javax.swing.JFrame {
         jLabel13.setText("Rol en Tienda:");
 
         cmbCargo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        cmbCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Comprador", "Vendedor", "Estadístico" }));
+        cmbCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Vendedor" }));
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
@@ -550,11 +550,7 @@ public class frmRegistrarUsuario extends javax.swing.JFrame {
                   if(cmbCargo.getSelectedIndex()==0){
                      agregado.setRol("A");
                   }else if(cmbCargo.getSelectedIndex()==1){
-                     agregado.setRol("C");
-                  }else if(cmbCargo.getSelectedIndex()==2){
                      agregado.setRol("V");
-                  }else if(cmbCargo.getSelectedIndex()==3){
-                     agregado.setRol("E");
                   }
 
               try {

@@ -69,7 +69,7 @@ public class frmCompras extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         LlenarCompras();
         TableModel();
-        cmbTipoCompra.setSelectedIndex(1);
+        
         tHeadVentas = tblCompra.getTableHeader();
         Font fuente = new Font("Tahoma", Font.BOLD, 12);
         tHeadVentas.setBackground(jpnBarraSuperior.getBackground());
@@ -80,6 +80,9 @@ public class frmCompras extends javax.swing.JFrame {
         jpnUser.setVisible(false);
         jpnWhite.setVisible(false);
         obtenerRol();
+        
+            
+        
         dtcFecha.setDateFormatString("dd-MM-yyyy");
                 lblCo1.setVisible(false);
         lblCo2.setVisible(false);
@@ -1036,9 +1039,25 @@ public class frmCompras extends javax.swing.JFrame {
                 lblDetallesCompras.setVisible(true);
                 lblMenu.setVisible(true);
                 lblAgregarUsuario.setVisible(true);
+                cmbTipoCompra.setSelectedIndex(1);
             }
             else if(rol.equals("V")){
                 lblRolUsuario.setText("VENDEDOR");
+                cmbTipoCompra.setSelectedIndex(2);
+                lblMenu.setVisible(false);
+                lblAgregarUsuario.setVisible(false);
+                btnCompras.setVisible(true);
+                btnVentas.setVisible(true);
+                btnBitacoras.setVisible(false);
+                btnDetalleCompras.setVisible(false);
+                btnDetalleVentas.setVisible(false);
+                btnHome.setVisible(false);
+                btnParametro.setVisible(false);
+                btnProductos.setVisible(false);
+                btnProveedores.setVisible(false);
+                btnReportes.setVisible(false);
+                btnTipoPrecio.setVisible(false);
+                btnSucursales.setVisible(false);
             lblAgregarUsuario.setVisible(false);}
             else if(rol.equals("C")){
                 lblRolUsuario.setText("COMPRADOR");
@@ -1356,6 +1375,7 @@ public class frmCompras extends javax.swing.JFrame {
                 ControladorCompra.ActualizarPrecioPromedioProducto(detallesCompra);
                 ControladorCompra.ActualizarInventario(detallesCompra, ControladorSucursal.ObtenerIdSucursal(cmbSucursalCompra.getSelectedItem()));
                 AgregarBitacora("Realizó la compra que tiene como ID: "+txtIdCompra.getText()+" de $"+txtTotal.getText());
+                Diseño.Apertura = Diseño.Apertura - Double.parseDouble(txtTotal.getText());  
                 
                 mensajeNotificacion("Compra Agregada", "Ok");
                 
@@ -1530,12 +1550,16 @@ public class frmCompras extends javax.swing.JFrame {
             txtNumeroDoc.setVisible(true);
             
             
+        }else if(cmbTipoCompra.getSelectedIndex()==2){
+            lblProveedor.setVisible(false);
+            cmbProveedor.setVisible(false);
+        
         }else{
             lblnumdoc.setVisible(false);
             txtNumeroDoc.setVisible(false);
-            
-            
         }
+            
+        
     }//GEN-LAST:event_cmbTipoCompraItemStateChanged
 
     private void txtCodBarraProd1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodBarraProd1KeyTyped
@@ -1699,6 +1723,7 @@ public class frmCompras extends javax.swing.JFrame {
         Date date = new Date();
         SimpleDateFormat hora = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         bitacora.setAccion("Cerró sesión.");
+        bitacora.setAccion("Ha finalizado el día con $"+Diseño.Apertura);
         bitacora.setFecha(hora.format(date));
         try {
             bitacora.setIdUsuario(ControladorUsuario.ObtenerIdUser(lblUser1.getText()));

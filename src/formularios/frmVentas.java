@@ -154,10 +154,22 @@ public class frmVentas extends javax.swing.JFrame {
             }
             else if(rol.equals("V")){
                 lblRolUsuario.setText("VENDEDOR");
-                jpnSubMenu.setVisible(false);
+                //jpnSubMenu.setVisible(false);
                 lblDetallesVentas.setVisible(false);
                 lblMenu.setVisible(false);
                 lblAgregarUsuario.setVisible(false);
+                btnCompras.setVisible(true);
+                btnVentas.setVisible(true);
+                btnBitacoras.setVisible(false);
+                btnDetalleCompras.setVisible(false);
+                btnDetalleVentas.setVisible(false);
+                btnHome.setVisible(false);
+                btnParametro.setVisible(false);
+                btnProductos.setVisible(false);
+                btnProveedores.setVisible(false);
+                btnReportes.setVisible(false);
+                btnTipoPrecio.setVisible(false);
+                btnSucursales.setVisible(false);
             }
             else if(rol.equals("C")){
                 lblRolUsuario.setText("COMPRADOR");
@@ -276,10 +288,18 @@ public class frmVentas extends javax.swing.JFrame {
         }
     }
     //CARGAR PRODUCTO EN LA TABLA
+    public void existencias(){
+        if(miProducto.getInventario()<=10){
+            mensajeNotificacion("Este producto esta próximo a agotarse", "Adv");
+        }
+    }
     public void cargarTabla() throws ErrorTienda{
-        
+        existencias();
         if(VerificarTabla()==false){
-            int contador=0;
+            if(Integer.parseInt(txtCantidadVender.getText())>miProducto.getInventario()){
+                mensajeNotificacion("La cantidad exigida supera la disponible", "Adv");
+            }else{
+                int contador=0;
         int fila=modeloVentas.getRowCount();
         double costoUnitario=0,totalDetalle=0;
         listas(false);
@@ -329,6 +349,8 @@ public class frmVentas extends javax.swing.JFrame {
           SumarSubTotales();
         txtTotalventa.setText("$ "+decimal.format(subTotales));  
         }
+            }
+            
         }
         
         limpiar("p");
@@ -567,6 +589,7 @@ public class frmVentas extends javax.swing.JFrame {
         if(cv.Agregar(venta,DetallesVenta,"VENTA")){
             mensajeNotificacion("¡Venta realizada!", "Ok");
             AgregarBitacora("Realizó la venta que tiene como ID: "+idV+" por "+txtTotalventa.getText());
+            Diseño.Apertura = Diseño.Apertura + Double.parseDouble(txtTotalventa.getText().substring(2));
             
             
         }else{
@@ -599,7 +622,10 @@ public class frmVentas extends javax.swing.JFrame {
            if(txtCodigoBarraVender.getText().equals(modeloVentas.getValueAt(x, 0))){//VERIFICANDO SI ESTE YA EXISTE EN ESTA
                
                int cantidad = Integer.parseInt(txtCantidadVender.getText())+ Integer.parseInt(String.valueOf(modeloVentas.getValueAt(x, 2)));
-               modeloVentas.setValueAt(cantidad, x, 2);
+               if(cantidad>miProducto.getInventario()){
+                   mensajeNotificacion("La cantiadad exigida supera la disponible", "Adv");
+               }else{
+                   modeloVentas.setValueAt(cantidad, x, 2);
                double precioUnitario = Double.parseDouble(String.valueOf(modeloVentas.getValueAt(x, 3)));
                double subTotal = precioUnitario*cantidad;
                modeloVentas.setValueAt(decimal.format(subTotal), x, 4);
@@ -619,6 +645,8 @@ public class frmVentas extends javax.swing.JFrame {
                }
                CostoGravado+=(miProducto.getCosto()*Double.parseDouble(txtCantidadVender.getText()));
                System.err.println("Costo Gravado "+CostoGravado);
+               }
+               
                return true;
            }
        }
@@ -881,7 +909,7 @@ public class frmVentas extends javax.swing.JFrame {
         });
         jpnUser.add(lblCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 45, 110, 20));
 
-        getContentPane().add(jpnUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 50, 230, 110));
+        getContentPane().add(jpnUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 55, 230, 110));
 
         jpnAgregarCompra.setBackground(new java.awt.Color(0, 0, 0));
         jpnAgregarCompra.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -2192,6 +2220,7 @@ public class frmVentas extends javax.swing.JFrame {
         Date date = new Date();
         SimpleDateFormat hora = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         bitacora.setAccion("Cerró sesión.");
+        bitacora.setAccion("Ha finalizado el día con $"+Diseño.Apertura);
         bitacora.setFecha(hora.format(date));
         try {
             bitacora.setIdUsuario(ControladorUsuario.ObtenerIdUser(lblUser1.getText()));
