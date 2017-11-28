@@ -2220,7 +2220,7 @@ public class frmVentas extends javax.swing.JFrame {
         Date date = new Date();
         SimpleDateFormat hora = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         bitacora.setAccion("Cerró sesión.");
-        bitacora.setAccion("Ha finalizado el día con $"+Diseño.Apertura);
+        bitacora.setAccion("Ha finalizado el día con $"+decimal.format(Diseño.Apertura));
         bitacora.setFecha(hora.format(date));
         try {
             bitacora.setIdUsuario(ControladorUsuario.ObtenerIdUser(lblUser1.getText()));

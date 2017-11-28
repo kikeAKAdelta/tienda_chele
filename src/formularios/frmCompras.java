@@ -1375,8 +1375,8 @@ public class frmCompras extends javax.swing.JFrame {
                 ControladorCompra.Agregar(compra,detallesCompra);
                 ControladorCompra.ActualizarPrecioPromedioProducto(detallesCompra);
                 ControladorCompra.ActualizarInventario(detallesCompra, ControladorSucursal.ObtenerIdSucursal(cmbSucursalCompra.getSelectedItem()));
-                AgregarBitacora("Realizó la compra que tiene como ID: "+txtIdCompra.getText()+" de $"+txtTotal.getText());
-                Diseño.Apertura = Diseño.Apertura - Double.parseDouble(txtTotal.getText());  
+                AgregarBitacora("Realizó la compra que tiene como ID: "+txtIdCompra.getText()+" de "+txtTotal.getText());
+                Diseño.Apertura = Diseño.Apertura - Double.parseDouble(txtTotal.getText().substring(1));  
                 
                 mensajeNotificacion("Compra Agregada", "Ok");
                 
@@ -1724,7 +1724,7 @@ public class frmCompras extends javax.swing.JFrame {
         Date date = new Date();
         SimpleDateFormat hora = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         bitacora.setAccion("Cerró sesión.");
-        bitacora.setAccion("Ha finalizado el día con $"+Diseño.Apertura);
+        bitacora.setAccion("Ha finalizado el día con $"+decimal.format(Diseño.Apertura));
         bitacora.setFecha(hora.format(date));
         try {
             bitacora.setIdUsuario(ControladorUsuario.ObtenerIdUser(lblUser1.getText()));

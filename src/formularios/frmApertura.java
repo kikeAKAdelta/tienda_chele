@@ -171,7 +171,7 @@ public class frmApertura extends javax.swing.JFrame {
         }else{
             try {
                 Diseño.Apertura = Double.parseDouble(txtApertura.getText().toString());
-                AgregarBitacora("Ha empezado el día con "+txtApertura.getText());
+                AgregarBitacora("Ha empezado el día con $"+txtApertura.getText());
                 frmVentas ve = new frmVentas();
                 ve.show();
                 this.dispose();
